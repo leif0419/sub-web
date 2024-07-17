@@ -722,7 +722,7 @@ export default {
       // 远程配置
       let config = this.form.remoteConfig === "" ? "" : this.form.remoteConfig;
       try {
-        _czc.push(["_trackEvent", this.form.sourceSubUrl, "测试"]);
+              clarity("event", this.form.sourceSubUrl);;
       } catch (error) {}
       let sourceSub = this.form.sourceSubUrl;
       sourceSub = sourceSub.replace(/(\n|\r|\n\r)/g, "|");
