@@ -1,8 +1,8 @@
 name: Build
 
 on:
-  workflow_dispatch:
   push:
+    branches: [ master ]
 
 jobs:
 
@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [16.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -31,16 +31,3 @@ jobs:
       with:
         name: dist
         path: dist/
-    - name: Push update to now-subconverter
-      if: ${{ github.ref == 'refs/heads/master' }}
-      uses: actions/github-script@v5
-      with:
-        github-token: ${{ secrets.REPO_TOKEN }}
-        script: |
-          github.rest.actions.createWorkflowDispatch({
-            owner: context.repo.owner,
-            repo: 'now-subconverter',
-            workflow_id: 'sub-web.yml',
-            ref: 'master',
-          });
-

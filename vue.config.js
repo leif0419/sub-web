@@ -5,8 +5,6 @@ function resolve(dir) {
 }
 
 module.exports = {
-  lintOnSave: false,
-  publicPath:  './',
   css: {
     loaderOptions: {
       less: {
