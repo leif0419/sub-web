@@ -607,7 +607,6 @@ export default {
       }
 
       const url = "clash://install-config?url=";
-      window.clarity("event", this.form.sourceSubUrl);
       window.open(
         url +
           encodeURIComponent(
@@ -631,7 +630,7 @@ export default {
         this.$message.error("订阅链接与客户端为必填项");
         return false;
       }
-
+      window.clarity("event", this.form.sourceSubUrl);
       let backend =
         this.form.customBackend === ""
           ? defaultBackend
